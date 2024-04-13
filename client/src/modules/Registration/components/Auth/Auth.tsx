@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Logo from '../../../../UI/Logo/Logo';
 import RegistrationAuthForm from '../RegistrationAuthForm/RegistrationAuthForm';
 import RegistrationButton from '../RegistrationButton/RegistrationButton';
 import styles from './Auth.module.scss';
+import { Context } from '../../../../main';
 const Auth: React.FC = () => {
+  const { store } = useContext(Context);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [emailDirty, setEmailDirty] = useState<boolean>(false);
@@ -54,7 +56,7 @@ const Auth: React.FC = () => {
   };
   return (
     <div className={styles.main}>
-      <form>
+      <div>
         <div className={styles.logo}>
           <Logo />
         </div>
@@ -85,9 +87,11 @@ const Auth: React.FC = () => {
           />
         </div>
         <div className={styles.btn}>
-          <RegistrationButton disabled={!formValid}>Войти</RegistrationButton>
+          <RegistrationButton onClick={() => store.login(email, password)} disabled={!formValid}>
+            Войти
+          </RegistrationButton>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
