@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styles from './Profile.module.scss';
 import logout from './assets/logout.svg';
 import { Context } from '../../main';
+import { observer } from 'mobx-react';
 const Profile: React.FC = () => {
   const { store } = useContext(Context);
   return (
@@ -17,4 +18,4 @@ const Profile: React.FC = () => {
   );
 };
 
-export default Profile;
+export default observer(Profile);
