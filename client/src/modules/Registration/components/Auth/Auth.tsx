@@ -5,6 +5,7 @@ import RegistrationAuthForm from '../RegistrationAuthForm/RegistrationAuthForm';
 import RegistrationButton from '../RegistrationButton/RegistrationButton';
 import styles from './Auth.module.scss';
 import { Context } from '../../../../main';
+import { observer } from 'mobx-react';
 const Auth: React.FC = () => {
   const { store } = useContext(Context);
   const [email, setEmail] = useState<string>('');
@@ -96,4 +97,4 @@ const Auth: React.FC = () => {
   );
 };
 
-export { Auth };
+export default observer(Auth);
